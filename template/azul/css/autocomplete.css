@@ -1,0 +1,88 @@
+
+/*div Login*/
+
+#divLogin {
+    border: 1px solid black;
+    width: 250px;
+    color: #E4DBCF;
+    height: 150px;
+    margin:250px 500px;
+}
+
+#divLogin form ul, ol {
+    list-style-type: none;
+}
+
+#divLogin form ul, ol li{
+    height: 22px;
+    margin-left: 1px;
+}
+
+#divLogin form label {
+    float:left;
+    width:50px;
+    text-align:right;
+}
+
+#divLogin form ul, ol li .button {
+    margin-left: 117px;
+    height: 21px;
+    width: 60px;
+    line-height: 16px;
+    font-family:  Arial, Verdana, sans-serif;
+    font-size: 11px;
+    padding-bottom:1px;
+    margin-top:5px;
+}
+
+#divLogin form ul, ol li .fieldLogin {
+    width: 115px;
+}
+
+.titulo {
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.oculta {
+    display: none;
+    color: red;
+}
+
+.cabeca_linha {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* CSS aplicado na associação da cidade ao representante (ajax) */
+
+div.suggestionsBox {
+    position: relative;
+    left: 30px;
+    margin: 10px 0px 0px 0px;
+    width: 200px;
+    background-color: #659CD8;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border: 2px solid #red;
+    color: #000;
+}
+
+.suggestionList {
+    margin: 0px;
+    padding: 0px;
+}
+
+.suggestionList li {
+    margin: 0px 0px 3px 0px;
+    padding: 3px;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+.suggestionList li:hover {
+    background-color: #659CD8;
+    color: #FFF;
+
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<!-- <meta http-equiv="refresh" content="45" > --> 
+	<head>
+		<title>SOX</title>
+		<style type="text/css">
+			<!--
+			@import url("<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template . '/';?>style.css");
+			-->
+		</style>
+	</head>
+<body>
+<table>
+	<tr> 
+		<th><img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.TEMPLATE_NAME . '/'; ?>img/oi.png"> </th> 
+		<th><h1>COpS - SOx</h1></th>
+	</tr>
+</table>
+
+<div>
+    <a href="<?php echo BASE_URL; ?>sox" class="butao">SOx</a>
+    <a href="" class="butao">Alertas</a>
+    <a href="" class="butao">Problemas</a>
+    <a href="" class="butao">Coletas</a>
+	<?php // foreach ( $menus as $menu ) : ?>
+		<!--  <a href="<?php // echo BASE_URL . $menu->link; ?>" class="butao"><?php // echo $menu->name?></a> -->
+	<?php // endforeach; ?>
+</div>
+<div>
+	{contents}
+</div>

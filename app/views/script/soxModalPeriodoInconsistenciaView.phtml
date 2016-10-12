@@ -1,0 +1,21 @@
+<div>
+	<a href="<?php echo BASE_URL.'script/excel/' . $script[0]->cod_alerta .'/'. $inicio . '/' . $fim;  ?>">
+		<img style='margin-top: 5px; margin-bottom:5px; float: right;' src='<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/excel.png' />
+	</a>
+</div>
+<table id="listaExecucoes" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	<tbody>
+		<tr>
+		<?php $campos = explode (",", $script[0]->tabela_colunas); foreach ($campos as $campo) : if ( !empty( $campo ) ) : ?>
+			<th><?php echo strtolower( str_replace('"', '', trim( $campo ) ) );  ?></th>
+			<?php endif; endforeach; ?>
+		</tr>
+		<?php foreach ($registros as $indice => $registro): ?>
+		<tr>
+			<?php foreach ($campos as $campo) : if ( !empty( $campo ) ) : $campo = str_replace('"', '', trim( $campo ) ); ?>
+				<td><?php echo $registro->$campo; ?></td>					
+			<?php endif; endforeach; ?>				
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>

@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="css/mocha.css" />
+  <link href="../sDashboard.css" rel="stylesheet">
+  <style>
+  /*these two style overrides are needed so that the dashboard is not displayed in the test running when running the tests*/
+  .dashboardContainer{
+    display:none;
+  }
+  .sDashboard-overlay{
+    display: none !important;
+  }
+  </style>
+  <script src="libs/jquery.js" type="text/javascript"></script>
+  <script src="libs/jquery-ui.js" type="text/javascript"> </script>
+  <script src="libs/jquery.dataTables.js"> </script>
+  <!-- load flotr2 charting library -->
+    <!--[if IE]>
+    <script language="javascript" type="text/javascript" src="libs/flotr2/flotr2.ie.min.js"></script>
+    <![endif]-->
+  <script src="libs/flotr2.js" type="text/javascript"> </script>
+
+  <script src="libs/chai.js" type="text/javascript"></script> <!-- added chai.js instead of assert -->
+  <script src="libs/mocha.js" type="text/javascript"></script>
+  <script src="libs/sinon.js" type="text/javascript"></script>
+  <script src="../jquery-sDashboard.js" type="text/javascript"> </script>
+  <script>mocha.setup('bdd')</script>
+  <script src="test-specs/dashboard-specs.js" type="text/javascript"></script>
+  <script>
+    $(function() {
+      mocha.run();
+    })
+  </script>
+</head>
+<body>
+  <div id="mocha"></div>
+  <ul class="dashboardContainer"></ul>
+</body>
+</html>

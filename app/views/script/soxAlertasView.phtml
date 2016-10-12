@@ -1,0 +1,81 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#listaAlertas').DataTable({
+            "language": {
+                "url": "<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/datatables/examples/resources/pt_BR.txt"
+            }
+        });
+
+        $("#dialog:ui-dialog" ).dialog( "destroy" );
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            title: 'Informações de Execução',
+            height: 300,
+            width: 400,
+            show: {
+              effect: "fade",
+              duration: 500
+            },
+            hide: {
+              effect: "fade",
+              duration: 500
+            }
+        });
+       
+        $("a[id^='alerta']").click(function(){
+
+            var id_sox = $(this).siblings('input#valor_alerta').val();
+
+            $( '#dialog' ).load( "<?php echo BASE_URL.'sox/consulta/'; ?>" + id_sox);
+        	$( "#dialog" ).dialog( "open" );
+        });
+    });
+</script> 
+
+<div class="registration" style="padding: 10px; margin-bottom: 30px;">
+    
+    <table id="listaAlertas" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+				<th>Cod Alerta</th>
+				<th>Descricao</th>
+				<th>Horario Agendado</th>
+				<th>Finalizado em</th>
+				<th>Erro</th>
+				<th>Total</th>
+				<th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($alertas as $alerta): ?>
+			<tr>
+				<td><?php echo $alerta->codigo; ?></td>
+				<td><?php echo $alerta->nome; ?></td>
+				<td><?php  ?></td>
+				<td><?php  ?></td>
+				<td><?php  ?></td>
+				<td align="center"><?php ?></td>
+				<td align="center">
+				    <a id="alerta_<?php echo $alerta->codigo; ?>>" href="#">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/zoom.png" />
+					</a>
+                    <a href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/charts01.png" />
+					</a>
+                    <a href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/refresh.png" />
+                    </a>
+                    <a href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/Recycle.png" />
+                    </a>
+                    <input type="hidden" value="<?php echo $alerta->codigo; ?>" id="valor_alerta" />
+				</td>
+			</tr>
+			<?php endforeach; ?>
+        </tbody>
+    </table>
+
+	<div id="dialog"></div>
+	
+</div>

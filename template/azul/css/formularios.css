@@ -1,0 +1,14 @@
+div.cadastroListas ul {
+	list-style-type: none;
+}
+
+div.cadastroListas ul li label {
+    float: left;
+    width:100px;
+    text-align:right;
+}
+
+div.cadastroListas ul li .campos {
+    width: 150px;
+    margin-left: 5px;
+}

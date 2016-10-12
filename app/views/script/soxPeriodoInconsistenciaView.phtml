@@ -1,0 +1,57 @@
+<link href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/sDashboard.css" rel="stylesheet">
+<link href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/css/jquery.minitwitter.css" rel="stylesheet">
+<link href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/css/gitter/css/jquery.gritter.css" rel="stylesheet"/>
+
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/touchpunch/jquery.ui.touch-punch.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/gitter/jquery.gritter.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/datatables/jquery.dataTables.js"></script>
+
+<!--[if IE]>
+<script language="javascript" type="text/javascript" src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/flotr2/flotr2.ie.min.js"></script>
+<![endif]-->
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/flotr2/flotr2.js" type="text/javascript"></script>
+ 
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/jquery-sDashboard.js" type="text/javascript"> </script>
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/themeswitcher/jquery.themeswitcher.min.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/miniTwitter/jquery.minitwitter.js" type="text/javascript"></script>
+<!-- <script src="<?php // echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/exampleData.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		$("input.dia").datepicker({
+			dateFormat: 'dd-mm-yy',
+		});
+		
+		// Selecionando dados
+		$("#consultaPeriodo").click(function(){
+
+			var codigo 	= $('#codigo').val();
+			var inicio 	= $('#inicio').val();
+			var fim 	= $('#fim').val();
+
+            $( '#resultadoBusca' ).html("<img style='margin-left: 350px; margin-top: 100px;' src='<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/carregando3.gif' />");
+        	setTimeout(function(){
+        		$("#resultadoBusca").load("<?php echo BASE_URL.'script/modalPeriodoInconsistencia/'; ?>" + codigo + '/' + inicio + '/' + fim);
+        	}, 5);
+			
+		});
+	});
+	
+</script>
+<div style="float: left;" class="cadastroListas">
+	<ul >
+		<li>
+			<input id="inicio" name="inicio" type="text" class="dia" placeholder="Inicio" />
+		</li>
+		<li>
+			<input id="fim" name="fim" type="text" class="dia" placeholder="Fim"  />
+		</li>
+		<li>
+			<input id="codigo" name="codigo" type="hidden" value="<?php echo $codigo; ?>" />
+			<button id="consultaPeriodo">Consultar</button>
+		</li>
+	</ul>
+</div>
+<div id="resultadoBusca" style="margin-top: 250px;"></div>

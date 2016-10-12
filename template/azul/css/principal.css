@@ -1,0 +1,87 @@
+/* Documento de Estilos */
+body  {
+	font-family:Verdana, arial, times, helvetica, arial, sans-serif;
+	margin:0;
+	padding:0;
+	font-size:76%;
+        height: 100%;
+}
+
+h3 {
+    color: #5c9ccc;
+}
+a { text-decoration:none; color: white;}
+a:hover {font-weight: bold; color: white;}
+
+/*********   INLINE NAVIGATION   WRAPPER     *****/
+
+#navwrap  {
+	position:relative;
+	padding-top:1px;
+	padding-bottom:1px;
+	border-top:1px solid #888;
+	border-bottom:2px solid #888;
+}
+
+
+/******** CONTEUDO **************/
+#conteudo {
+    /*border: 1px solid #c4c4c4;
+    border: 3px solid black;*/
+    margin: 5px;
+    height: 100%;
+    overflow: auto;
+    /*background:url(../images/fundoweb.png);*/
+}
+
+/********   SIDE NAVIGATION     ****/
+#sidenav    {
+    border:1px solid #c4c4c4;
+    height: 570px;
+    width: 99.70%;
+}
+
+#sidenav .oculta {
+    position: absolute;
+    left: 100px;
+    top: 60px;
+    height: 200px;
+    width: 1160px;
+    background-color: transparent;
+    /*border: 1px solid #000000;*/
+    z-index: 100;
+   /* display: none;*/
+}
+
+#sidenav h2 {
+	font-size:100%;
+	background:url(../images/teal.gif);
+	color:#fff;
+	height:1.8em;
+	line-height:1.8em;
+	padding-left:5px;
+	margin-top:0px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#sidenav table {
+    margin: 0px;
+}
+
+/********    RODAPE   *****************  */
+#rodape  {
+	/*clear:both;*/
+	height:3em;
+	border-top:1px solid #77abb8;
+	text-align:center;
+	color:#fff;
+    background-image: url(../images/teal.gif);
+	font-size:.8em;
+    margin-bottom: 0px;
+    /*position: absolute;*/
+    position: fixed;
+	bottom: 0;
+    width: 100%;
+}
+

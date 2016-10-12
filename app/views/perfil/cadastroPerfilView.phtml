@@ -1,0 +1,23 @@
+<div id="cadastroPerfil" style="padding: 10px;" class="cadastroListas">
+    <form action="<?php echo BASE_URL.'perfil/salva/'; ?>" method="post" enctype="multipart/form-data">
+    	<fieldset style="border: 1px solid #6495ED;">    
+            <legend style="color:#6495ED">Novo Perfil</legend>
+            <div>
+				<ul>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Nome:</label>										
+						<input type="text" name="nome" id="jform_name" value="" required aria-required="true" placeholder="Nome Perfil" class="campos" /> *
+					</li>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Sigla:</label>										
+						<input type="text" name="sigla" id="jform_name" value="" required aria-required="true" placeholder="Sigla" class="campos" /> *
+					</li>
+				</ul>
+            </div>
+        </fieldset>
+        <div style="margin-top: 10px;">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a class="btn btn-primary" style="" title="Cancel">Cancelar</a>
+        </div>
+    </form>
+</div>

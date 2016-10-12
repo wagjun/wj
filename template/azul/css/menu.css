@@ -1,0 +1,149 @@
+/*********   Menu By Wagner   *********/
+#topnav  {
+    background:url(../images/teal.gif) repeat-x;
+    padding-top:5px;
+    color:#fff;
+    height: 30px;
+}
+
+#topnav ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+    line-height:2.4em;
+}
+
+#topnav ul li {
+    float: left;
+    position:relative;
+    z-index:auto !important ;
+    z-index:1000 ;
+}
+
+#topnav ul li a {
+    width:100px;
+    display: block;
+    color: #fff;
+    text-align: center;
+}
+
+#topnav ul li ul {
+    display:none;
+    border:none;
+}
+
+/* Para não IE6*/
+
+#topnav ul li:hover a {
+    background-color:#e5f1f4;
+    color:teal;
+    text-decoration:none;
+    border: 1px solid #fff;
+}
+
+#topnav ul li:hover ul {
+    display:block;
+    width:16.0em;
+    position:absolute;
+    z-index:999;
+    top:2.4em;
+    margin-top:0;
+    left:0;
+}
+
+#topnav ul li:hover ul li a {
+    display:block;
+    width:16.0em;
+    height:auto;
+    line-height:1.3em;
+    margin-left:0px;
+    padding:4px 16px 4px 16px;
+    border: 1px solid #fff;
+    background-color: #f8fbfc;
+    font-weight:normal;
+    color:teal;
+    text-align: left;
+}
+
+#topnav ul li:hover ul li a:hover {
+    background-color:#e5f1f4;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+/* Para IE6 */
+
+#topnav table {
+    position:absolute;
+    top:0;
+    left:0;
+    border-collapse:collapse;
+    border-top: 1px solid teal;
+}
+
+#topnav ul li a:hover {
+    background-color:#e5f1f4;
+    text-decoration:none;
+}
+
+#topnav ul li a:hover ul {
+    display:block;
+    width:10.0em;
+    position:absolute;
+    z-index:999;
+    top:3.1em;
+    top:3.0em;
+    left:0;margin-top:0.1em;
+}
+
+#topnav ul li a:hover ul li a {
+    display:block;
+    width:10.0em;
+    height:1px;
+    line-height:1.3em;
+    /*padding:4px 16px 4px 16px;*/
+    border-left:solid 1px teal;
+    border-bottom: solid 1px teal;
+    background-color:white;
+    font-weight:normal;
+    color:rgb(50,50,50);
+}
+
+#topnav ul li a:hover ul li a:hover {
+    background-color:rgb(210,210,210);
+    text-decoration:none;
+}
+
+/* Menu aparece */
+
+#topnav ul li ul li ol {
+    list-style: none;
+}
+
+#topnav ul li ul li ol {
+    position: absolute;
+    left: 188px;
+    top: -30px;
+    display: none
+}
+
+#topnav ul li ul li ol li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #fff; /* IE6 */
+    border: 1px solid #fff; /* IE6 */
+    border-bottom: solid 1px #fff;
+    top: 0px;
+}
+
+#topnav ul li ul li:hover ol {
+    display: block;
+}
+
+#infouser {
+    position:absolute;
+    top:10px;
+    right:40px;
+    font-size:.8em;
+}

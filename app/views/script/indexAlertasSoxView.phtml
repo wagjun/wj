@@ -1,0 +1,91 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#listaAlertas').DataTable({
+            "language": {
+                "url": "<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/datatables/examples/resources/pt_BR.txt"
+            }
+        });
+
+        // Inconsistencia do dia
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            title: 'Inconsistencias',
+            height: 600,
+            width: 800,
+            show: {
+              effect: "fade",
+              duration: 500
+            },
+            hide: {
+              effect: "fade",
+              duration: 500
+            }
+        });
+
+        
+        $("a[id^='inconsistencia']").click(function(){
+
+            var id_sox = $(this).siblings('input#valor_alerta').val();
+
+            $( '#dialog' ).html("<img style='margin-left: 350px; margin-top: 100px;' src='<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/carregando3.gif' />");
+        	$( "#dialog" ).dialog( "open" );
+        	setTimeout(function(){
+            	$( '#dialog' ).load( "<?php echo BASE_URL.'script/listaInconsistencia/'; ?>" + id_sox );
+        	}, 5);
+        });
+
+        $("a[id^='periodo']").click( function() {
+
+            var id_sox = $(this).siblings('input#valor_alerta').val();
+            
+            $( '#dialog' ).html("<img style='margin-left: 350px; margin-top: 100px;' src='<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/carregando3.gif' />");
+    		$( "#dialog" ).dialog( "open" );
+    		setTimeout(function(){
+            	$( '#dialog' ).load( "<?php echo BASE_URL.'script/periodoInconsistencia/'; ?>" + id_sox );
+    		}, 5);
+        	
+        });
+        
+    });
+</script> 
+
+<div class="registration" style="padding: 10px; margin-bottom: 30px;">
+    
+    <table id="listaAlertas" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+				<th>Codigo</th>
+				<th>Nome</th>
+				<th>Situacao</th>
+				<th>Quantidade</th>
+				<th>Opcoes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($alertas as $alerta): ?>
+			<tr>
+				<td><?php echo $alerta->codigo; ?></td>
+				<td><?php echo $alerta->nome; ?></td>
+				<td style="text-align: center;"><?php echo $alerta->situacao; ?></td>
+                                <td style="text-align: center;"><?php if ( is_array ( $codigos[$alerta->codigo] ) ) : echo count( $codigos[$alerta->codigo] ); else: echo 'Não conf.'; endif; ?></td>
+				<td style="text-align: center;">
+				    <!-- 
+				    <a id="alerta_<?php // echo $alerta->situacao; ?>>" href="#">
+                                        <img src="<?php // echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/zoom.png" />
+                                    </a>
+                                    -->
+                                    <a id="inconsistencia_<?php echo $alerta->codigo; ?>>" href="#">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/question.png" />
+					</a>
+                    <a id="periodo_<?php echo $alerta->codigo; ?>>" href="#">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/charts01.png" />
+					</a>
+                    <input type="hidden" value="<?php echo $alerta->codigo; ?>" id="valor_alerta" />
+				</td>
+			</tr>
+			<?php endforeach; ?>
+        </tbody>
+    </table>
+	<div id="dialog"></div>
+</div>

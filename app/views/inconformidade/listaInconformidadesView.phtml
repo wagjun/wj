@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#listaPerfis').DataTable({
+            "language": {
+                "url": "<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/datatables/examples/resources/pt_BR.txt"
+            }
+        });
+    });
+</script> 
+<!-- <?php //echo BASE_URL . 'perfil/exclui/' . $profile->id;  ?> -->
+<div class="registration" style="padding: 10px; margin-bottom: 30px;">
+
+<div>
+	<a href="<?php echo BASE_URL.'inconformidades/excel/cpf_duplicado'?>">
+		<img style='margin-top: 5px; margin-bottom:5px; float: right;' src='<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/excel.png' />
+	</a>
+</div>
+
+    <table id="listaPerfis" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr bgcolor='#AAAAFA'>
+                <th width="60%">Nome</th>
+                <th width="20%">CPF</th>
+                <th width="20%">CN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($cpfs as $cpf): ?>
+            <tr>
+                <td width="60%" align="center"><?php echo $cpf->nome; ?></td>
+                <td width="20%"><?php echo $cpf->cpf; ?></td>
+                <td width="20%"><?php echo $cpf->cn; ?></td>               
+                    <input type="hidden" value="<?php echo $cpf->id; ?>" id="id_script" />                
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>	
+</div>

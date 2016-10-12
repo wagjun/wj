@@ -1,0 +1,18 @@
+    <table id="listaInexistente" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+				<th>Nome</th>
+				<th>CPF</th>
+				<th>Matricula</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($inexistentes as $inexistente): ?>
+			<tr>
+				<td><?php echo $inexistente->nome; ?></td>
+				<td><?php echo $inexistente->cpf; ?></td>
+				<td><?php echo $inexistente->matricula; ?></td>
+			</tr>
+			<?php endforeach; ?>
+        </tbody>
+    </table>

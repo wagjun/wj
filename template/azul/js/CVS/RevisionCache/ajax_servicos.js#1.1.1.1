@@ -1,0 +1,121 @@
+$(document).ready(function(){
+
+    // Ajax que carrega as informações dos serviços de coleta
+
+    $("#dialog:ui-dialog" ).dialog( "destroy" );
+    $('#servicosDetalhes').hide();
+    $("a[id^='coleta_']").click(function(){
+
+        var coleta = $(this).children().children().val();
+
+        $.ajax({
+            url: '/parceiros/servicos/buscaColeta/' + coleta,
+            dataType: 'json',
+            success: function(dados) {
+
+                $('#tituloDetalhes').html(dados.retorno[0].ORDEM_COLETA);
+                $("#empresaOrigem").html("<span>" + dados.retorno[0].REMETENTE + "</span>")
+                $("#cidadeOrigem").html("<span>" + dados.retorno[0].CIDADE_ORIGEM + ' - ' + dados.retorno[0].UF_ORIGEM + "</span>")
+                $("#observacoesOrigem").html("<span>" + dados.retorno[0].OBSERVACOES_COLETA + "</span>")
+                $("#valorServico").html("<span>" + dados.retorno[0].VALOR_COLETA + "</span>")
+
+                $( "#servicosDetalhes" ).dialog({
+                    height: 320,
+                    width: 550,
+                    modal: true,
+                    buttons: {
+                        Ok: function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    // Ajax que carrega as informações dos serviços de entrega
+
+    $("#dialog:ui-dialog" ).dialog( "destroy" );
+    $('#servicosDetalhes').hide();
+    $("a[id^='entrega_']").click(function(){
+
+        var entrega = $(this).children().children().val();
+
+        $.ajax({
+            url: '/parceiros/servicos/buscaColeta/' + entrega,
+            dataType: 'json',
+            success: function(dados) {
+
+                $('#tituloDetalhes').html(dados.retorno[0].ORDEM_COLETA);
+                $("#empresaOrigem").html("<span>" + dados.retorno[0].DESTINATARIO + "</span>")
+                $("#cidadeOrigem").html("<span>" + dados.retorno[0].CIDADE_DESTINO + ' - ' + dados.retorno[0].UF_DESTINO + "</span>")
+                $("#observacoesOrigem").html("<span>" + dados.retorno[0].OBSERVACOES_ENTREGA + "</span>")
+                $("#valorServico").html("<span>" + dados.retorno[0].VALOR_ENTREGA + "</span>")
+
+                $( "#servicosDetalhes" ).dialog({
+                    height: 320,
+                    width: 550,
+                    modal: true,
+                    buttons: {
+                        Ok: function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+
+
+    // Ajax que carrega as informações dos serviços dos Representantes na tela Modal
+
+/*
+    $('#servicosDetalhesAdmin').hide();
+    $("a[id^='servico_']").click(function(){
+
+          //$("#dialog:ui-dialog").dialog("destroy");
+
+            var servico       = $(this).children('#ocServico').val();
+            var representante = $(this).children('#idRepServico').val();
+
+             $.ajax({
+                         url: '/parceiros/servicos/buscaServico/' + servico + '/' + representante,
+                    dataType: 'json',
+                     success: function(dados) {
+
+                                $('#tituloDetalhesServicos').html(dados.servico[0].ORDEM_COLETA + ' - ' + dados.servico[0].REPRESENTANTE);
+                                $("#observacoes").html("<span>" + dados.servico[0].OBSERVACOES + "</span>")
+                                $("#valor").html("<span>" + dados.servico[0].VALOR + "</span>")
+                             }
+            });
+
+            $("#servicosDetalhesAdmin").dialog({
+                                               height: 420,
+                                                width: 650,
+                                                modal: true,
+                                              buttons: {
+                                                        Atualizar: function(){
+
+                                                                            $.ajax({
+                                                                                     url: '/parceiros/servicos/associaTaxasServicos/',
+                                                                                    type: 'post',
+                                                                                    data: {
+                                                                                            valor: $("input:checked").val()
+                                                                                          },
+                                                                                 success: function(data) {
+                                                                                                           alert(data);
+                                                                                          }
+                                                                            });
+                                                                            $(this).dialog( "close");
+                                                                    },
+                                                        Cancelar: function() {
+                                                                          $( this ).dialog( "close" );
+                                                        }
+                                              }
+                                        });
+
+            }); */
+
+
+});

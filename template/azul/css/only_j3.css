@@ -1,0 +1,29 @@
+/*BUTTON*/
+.btn-primary
+{
+	background-image: url(../images/button.png) !important;
+	background-position: left top;
+	background-repeat: repeat-x;
+	background-color: transparent;
+	border: 1px solid #BBBBBB !important;
+}
+.btn-primary:hover
+{
+	background-image: none;
+	background-color: #999999;
+	border: 1px solid #BBBBBB !important;
+}
+.readmore .btn
+{
+	border: 1px solid #BBBBBB !important;
+}
+/*PRINT-EMAIL ICON HOVER*/
+.dropdown-menu > LI > A:hover, .dropdown-menu > LI > A:focus, .dropdown-submenu:hover > A, .dropdown-submenu:focus > A
+{
+	background-image: none !important;
+}
+/*PAGINATION*/
+.pagenav LI A
+{
+	border-radius: 5px!important;
+}

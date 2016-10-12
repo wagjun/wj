@@ -1,0 +1,30 @@
+<div id="cadastroColeta" style="padding: 10px;" class="cadastroListas">
+    <form action="" method="post" enctype="multipart/form-data">
+    	<fieldset style="border: 1px solid #6495ED;">    
+            <legend style="color:#6495ED">Nova Coleta</legend>
+            <div>
+				<ul>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Nome:</label>										
+						<input type="text" id="jform_name" value="" required aria-required="true" placeholder="Nome da Coleta" class="campos" /> *
+					</li>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Schema/Tabela:</label>										
+						<input type="text" id="jform_name" value="" required aria-required="true" placeholder="Schema/Tabela" class="campos" /> *
+					</li>
+					<li>
+						<label id="jform_tipo-lbl" for="jform_tipo" title="">Situação:</label>										
+							<select name="tipo" aria-controls="example" class="campos">
+								<option value="A">Ativo</option>
+								<option value="I">Inativo</option>
+						</select>
+					</li>
+				</ul>
+            </div>
+        </fieldset>
+        <div style="margin-top: 10px;">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a class="btn btn-primary" style="" title="	Cancel">Cancelar</a>
+        </div>
+    </form>
+</div>

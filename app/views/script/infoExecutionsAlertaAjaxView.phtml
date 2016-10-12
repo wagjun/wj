@@ -1,0 +1,36 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+
+        $('#listaExecucoes').DataTable({
+            "language": {
+                "url": "<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/datatables/examples/resources/pt_BR.txt"
+            },
+            "scrollY": "250px",
+            "scrollCollapse": true,
+            "paging": false
+        });
+		
+	});
+
+</script>
+
+<table id="listaExecucoes" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th>Usuario</td>
+			<th>Inicio</td>
+			<th>Fim</td>
+			<th>Modo</td>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($dados as $indice => $execucao): ?>
+		<tr>
+			<td><?php echo $execucao->login; ?></td>
+			<td><?php echo $execucao->inicio_execucao; ?></td>
+			<td><?php echo $execucao->fim_execucao; ?></td>
+			<td><?php echo $execucao->modo_execucao; ?></td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>

@@ -1,0 +1,81 @@
+<div id="cadastroUsuario" style="padding: 10px;" class="cadastroListas">
+    <form action="<?php echo BASE_URL . 'usuario/salva/'?>" method="post" enctype="multipart/form-data">
+    	<fieldset style="border: 1px solid #6495ED;">    
+            <legend style="color:#6495ED">Atualizacao Usuario</legend>
+            <div>
+				<ul>
+					<?php foreach ($usuarios as $usuario) : ?>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Nome:</label>										
+						<input type="text" name="nome" id="jform_name" value="<?php echo $usuario->full_name; ?>" required aria-required="true" placeholder="Nome Completo" class="campos" /> *
+					</li>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Usuario:</label>										
+						<input type="text" name="usuario" id="jform_name" value="<?php echo $usuario->login; ?>" required aria-required="true" placeholder="usuario" class="campos" /> *
+					</li>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Senha:</label>										
+						<input type="password" name="senha" id="jform_name" value="<?php echo $usuario->password; ?>" required aria-required="true" placeholder="Senha" class="campos" /> *
+						<input type="hidden" name="senhaantiga" id="jform_name" value="<?php echo $usuario->password; ?>" />						
+					</li>
+					<li>
+						<label id="jform_tipo-lbl" for="jform_tipo" title="">Situacao:</label>										
+						<select name="situacao" aria-controls="example" class="campos">
+							<?php 
+                                                            if ( $usuario->status == 'A' ) {  
+                                                                    
+                                                                $ativo      = 'selected'; 
+                                                                $inativo    = '';
+                                                            } else { 
+                                                                $ativo      = ''; 
+                                                                $inativo    = 'selected'; 
+                                                            } ?>
+							<option value="A" <?php echo $ativo; ?>>Ativo</option>
+							<option value="I" <?php echo $inativo; ?>>Inativo</option>
+						</select>
+					</li>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Perfil:</label>										
+						<select name="perfil" aria-controls="example" class="campos">
+							<option value="">Selecione</option>
+							<?php foreach ( $profiles as $profile ) : $selected = ( $profile->id == $usuario->profile ) ? 'selected' : null; ?>
+							<option value="<?php echo $profile->id; ?>" <?php echo $selected ?>><?php echo $profile->name; ?></option>
+							<?php endforeach; ?>
+						</select>
+						
+					</li>
+                                        <li>
+                                                <label id="jform_name-lbl" for="jform_name" title="">Tipo:</label>										
+                                                <select name="tipo" aria-controls="example" class="campos">
+                                                        <option value="">Selecione</option>
+                                                        <?php foreach ( $types as $tipo) : $selected = ( $tipo->id == $usuario->user_type_id ) ? 'selected' : null; ?>
+                                                        <option value="<?php echo $tipo->id; ?>" <?php echo $selected; ?>><?php echo $tipo->description; ?></option>
+                                                        <?php endforeach; ?>
+                                                </select>
+                                        </li>
+                                        <li>
+                                                <label id="jform_name-lbl" for="jform_name" title="">Autenticação:</label>										
+                                                <select name="auth" aria-controls="example" class="campos">
+                                                        <option value="">Selecione</option>
+                                                        <?php foreach ( $auths as $auth) : $selected = ($auth->id == $usuario->type_authentication) ? 'selected' : null; ?>
+                                                        <option value="<?php echo $auth->id; ?>" <?php echo $selected; ?>><?php echo $auth->driver; ?></option>
+                                                        <?php endforeach; ?>
+                                                </select>
+                                        </li>
+                                        <li>
+                                                <label id="jform_name-lbl" for="jform_name" title="">E-mail:</label>										
+                                                <input type="text" name="email" id="jform_name" value="<?php echo $usuario->email; ?>" required aria-required="true" placeholder="E-mail" class="campos" /> *
+                                        </li>
+                                        
+                                        
+					<?php endforeach; ?>
+				</ul>
+            </div>
+        </fieldset>
+        <div style="margin-top: 10px;">
+            <input type="hidden" value="<?php echo $usuario->id; ?>" name="id" />
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a class="btn btn-primary" href="" title="Cancel">Cancelar</a>
+        </div>
+    </form>
+</div>

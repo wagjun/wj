@@ -1,0 +1,15 @@
+table {width:100%; border-collapse:collapse; margin:1em 0;}
+table, td {font:100% Arial, Helvetica, sans-serif;}
+th, td {text-align:left; padding: 2px;border:1px solid #fff;}
+th {background:#8cbfe5 repeat-x; color:#fff;}
+/*td {background:#e5f1f4; #328aa4} #77ABB8*/
+
+tr.even td {background:#e5f1f4;height: 25px;}
+tr.odd td {background:#f8fbfc;height: 25px;}
+
+div.listagem {margin-top: 0px;overflow: auto;height: 490px;}
+div.listagem table{margin-top: 0px;margin-bottom: 0px;}
+
+img.semBorda {border: 0px;}
+
+.slimScrollDiv { border: 1px solid #5c9ccc;}

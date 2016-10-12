@@ -1,0 +1,125 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#listaPerfis').DataTable({
+            "language": {
+                "url": "<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/datatables/examples/resources/pt_BR.txt"
+            }
+        });
+
+        $("#dialog:ui-dialog" ).dialog( "destroy" );
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            title: 'Perfil',
+            height: 420,
+            width: 700,
+            show: {
+              effect: "fade",
+              duration: 500
+            },
+            hide: {
+              effect: "fade",
+              duration: 500
+            }
+        });
+       
+        $("a[id^='script']").click(function(){
+
+            var id_script = $(this).siblings('input#id_script').val();
+
+            $( '#dialog' ).load( "<?php echo BASE_URL.'perfil/consulta/'; ?>" + id_script);
+        	$( "#dialog" ).dialog( "open" );
+        });
+
+        $("button#cadastro").click(function(){
+
+        	$( '#dialog' ).load( "<?php echo BASE_URL.'perfil/cadastro/'; ?>");
+        	$( "#dialog" ).dialog( "open" );
+        	
+        });
+
+        $("a[id^='edita_']").click(function(){
+
+            var id_script = $(this).siblings('input#id_script').val();
+
+            $( '#dialog' ).load( "<?php echo BASE_URL.'perfil/edita/'; ?>" + id_script);
+        	$( "#dialog" ).dialog( "open" );
+        });
+
+        
+        $("a[id^='exclui_']").click(function(){
+
+        	var id_script 	= $(this).siblings('input#id_script').val();
+
+        	$( "#confirm" ).html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Deseja realmente excluir?</p>');
+
+        	// Confirma��o de exclusao
+            
+            $( "#confirm" ).dialog({
+            	autoOpen: false,
+            	title: 'Excluir registro?',
+                resizable: false,
+                height:180,
+                modal: true,
+                buttons: {
+                  "Excluir": function() {
+
+    	                $.get( "<?php echo BASE_URL.'perfil/exclui/'; ?>" + id_script );
+    	                $( this ).dialog( "close" );
+    	                location.reload();
+                  },
+                  Cancelar: function() {
+                    	$( this ).dialog( "close" );
+                  }
+                },
+                show: {
+                    effect: "fade",
+                    duration: 500
+                },
+                hide: {
+                    effect: "fade",
+                    duration: 500
+                }
+    		});
+        	
+            $( "#confirm" ).dialog( "open" );
+        });
+        
+    });
+</script> 
+<!-- <?php //echo BASE_URL . 'perfil/exclui/' . $profile->id; ?> -->
+<div class="registration" style="padding: 10px; margin-bottom: 30px;">
+    
+    <div style="margin-bottom: 15px; float: left;"> 
+        <button id="cadastro" class="btn btn-primary">Cadastrar</button>
+    </div>
+    
+    <table id="listaPerfis" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+			<tr bgcolor='#AAAAFA'>
+				<th width="60%">Nome</th>
+				<th width="20%">Sigla</th>
+				<th width="20%">Opções</th>
+			</tr>
+        </thead>
+        <tbody>
+            <?php foreach ($profiles as $profile): ?>
+			<tr>
+				<td width="60%" align="center"><?php echo $profile->name; ?></td>
+				<td width="20%"><?php echo $profile->initials; ?></td>
+				<td width="20%" align="center">
+					<a id="edita_<?php echo $profile->id; ?>" href="#">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/tool.png" />
+                    </a>
+                    <a id="exclui_<?php echo $profile->id; ?>" href="#">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/Recycle.png" />
+                    </a>
+                    <input type="hidden" value="<?php echo $profile->id; ?>" id="id_script" />
+				</td>
+			</tr>
+			<?php endforeach; ?>
+        </tbody>
+    </table>
+	<div id="dialog"></div>
+	<div id="confirm"></div>
+</div>

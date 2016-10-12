@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="overlay">
+        <h1 class="header">
+            <img src="<?php echo BASE_URL . TEMPLATE_DIR . '/' . $this->template . '/'; ?>images/bs/logo-oi-roxo-transp.png" style="width:100px;height:100px;"/>
+        </h1>
+        <?php echo self::$session->getFromSession('captcha'); ?>
+        <form class="form-signin" role="form" method="post" action="<?php echo BASE_URL; ?>">
+            <?php if ( !empty( $msg ) ): ?>
+            <div class="alert alert-danger" role="alert">
+                <span class="fa  fa-exclamation-triangle fa-fw" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+                <?php echo utf8_decode($msg); ?>
+            </div>
+            <?php endif; ?>
+            <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                <input name="usuario" class="form-control" type="text" placeholder="Usuario" required autofocus>
+            </div>
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-unlock-alt fa-fw"></i></span>
+                <input name="senha" class="form-control" type="password" placeholder="Senha" required>
+            </div>
+            <?php if ( !empty ($exibe_captcha) ): ?>
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-repeat fa-fw"></i></span>    
+                <input name="captcha" class="form-control" type="text" placeholder="Captcha" required>
+            </div>
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <a class="fa fa-fw" href="<?php echo BASE_URL; ?>">
+                        <img style="margin-left: -5px;" height="32" src="<?php echo BASE_URL . TEMPLATE_DIR . '/' . $this->template . '/'; ?>images/icones/reload.png">
+                    </a>
+                </span>
+                <img height="60" width="160" class="form-control" src="<?php echo BASE_URL . 'principal/captcha/'; ?>" />
+            </div>
+            <?php endif; ?>
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Logar</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#listaScripts').DataTable({
+            "language": {
+                "url": "<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/datatables/examples/resources/pt_BR.txt"
+            }
+        });
+
+        // Dialog
+        $("#dialog:ui-dialog" ).dialog( "destroy" );
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            title: 'Informacao de Scripts',
+            height: 420,
+            width: 700,
+            show: {
+              effect: "fade",
+              duration: 500
+            },
+            hide: {
+              effect: "fade",
+              duration: 500
+            }
+        });
+
+        // Execucoes
+        $("a[id^='script']").click(function(){
+
+            var id_script = $(this).siblings('input#id_script').val();
+
+            $( '#dialog' ).load( "<?php echo BASE_URL.'script/execucoes/'; ?>" + id_script);
+        	$( "#dialog" ).dialog( "open" );
+        });
+
+        // Cadastro
+        $("button#cadastro").click(function(){
+
+        	$( '#dialog' ).load( "<?php echo BASE_URL.'script/cadastro/'; ?>");
+        	$( "#dialog" ).dialog( "open" );
+        	
+        });
+
+        // Edita
+        $("a[id^='edita_']").click(function(){
+
+            var id_script = $(this).siblings('input#id_script').val();
+
+            $( '#dialog' ).load( "<?php echo BASE_URL.'script/edita/'; ?>" + id_script);
+        	$( "#dialog" ).dialog( "open" );
+        });
+
+        // Graficos
+        $("a[id^='dados_']").click(function(){
+
+            var id_script = $(this).siblings('input#id_script').val();
+
+            $( '#dialog' ).load( "<?php echo BASE_URL.'script/dados/'; ?>" + id_script);
+        	$( "#dialog" ).dialog( "open" );
+        });
+        
+    });
+</script> 
+
+<div class="registration" style="padding: 10px; margin-bottom: 30px;">
+    <?php if ( $scripts[0] instanceof Exception ) : echo ( $scripts[0]->getMessage() ); else: ?>
+    
+    <div style="margin-bottom: 15px;"> 
+        <button id="cadastro" class="btn btn-primary">Cadastrar</button>
+    </div>
+
+    <table id="listaScripts" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+			<tr bgcolor='#AAAAFA'>
+				<th width="50%">Script</th>
+				<th width="20%">Schema/Tabela</th>
+				<th width="15%">Situação</th>
+				<th width="15%">Opções</th>
+			</tr>
+        </thead>
+        <tbody>
+            <?php foreach ($scripts as $script): ?>
+			<tr>
+				<td width="50%"><?php echo $script->nome; ?></td>
+				<td width="20%" align="center"><?php echo $script->tabela_referencia; ?></td>
+				<td width="15%" style="text-align: center;"><?php echo ($script->situacao == 'A' ? 'ATIVO' : 'INATIVO' ); ?></td>
+				<td width="15%" style="text-align: center;">
+				    <a id="script_<?php echo $script->id; ?>>" href="#">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/zoom.png" />
+					</a>
+                    <a id="dados_<?php echo $script->id; ?>" href="#">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/charts01.png" />
+					</a>
+					<a id="edita_<?php echo $script->id; ?>" href="#">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/tool.png" />
+                    </a>
+                    <a href="<?php echo BASE_URL.$script->link; ?>">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/refresh.png" />
+                    </a>
+					<a href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>">
+                    	<img src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>images/icones/24/Recycle.png" />
+                    </a>
+                    <input type="hidden" value="<?php echo $script->id; ?>" id="id_script" />
+				</td>
+			</tr>
+			<?php endforeach; ?>
+        </tbody>
+    </table>
+
+	<div id="dialog"></div>
+	
+	<?php endif; ?>
+</div>

@@ -1,0 +1,102 @@
+<link href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/sDashboard.css" rel="stylesheet">
+<link href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/css/jquery.minitwitter.css" rel="stylesheet">
+<link href="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/css/gitter/css/jquery.gritter.css" rel="stylesheet"/>
+
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/touchpunch/jquery.ui.touch-punch.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/gitter/jquery.gritter.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/datatables/jquery.dataTables.js"></script>
+
+<!--[if IE]>
+<script language="javascript" type="text/javascript" src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/flotr2/flotr2.ie.min.js"></script>
+<![endif]-->
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/flotr2/flotr2.js" type="text/javascript"></script>
+ 
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/jquery-sDashboard.js" type="text/javascript"> </script>
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/themeswitcher/jquery.themeswitcher.min.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/miniTwitter/jquery.minitwitter.js" type="text/javascript"></script>
+<!-- <script src="<?php // echo BASE_URL.TEMPLATE_DIR.'/'.$this->template.'/'; ?>js/dashboards/libs/exampleData.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		var myExampleData = {};
+		
+		//pie Chart sample data and options
+		myExampleData.pieChartData = [
+			{
+				data : [[0, 2]],
+				label : "Comedy"
+			}, {
+				data : [[0, 3]],
+				label : "Action"
+			}, {
+				data : [[0, 1]],
+				label : "Romance",
+				pie : {
+					explode : 20
+				}
+			}, {
+				data : [[0, 1]],
+				label : "Drama"
+			}
+		];
+
+		myExampleData.constructBarChartData = function() {
+			var d1 = [];
+			var d2 = []
+			var point
+			var i;
+			for ( i = 0; i < 4; i++) {
+				point = [Math.ceil(Math.random() * 10), i];
+				d1.push(point);
+				point = [Math.ceil(Math.random() * 10), i + 0.5];
+
+				d2.push(point);
+			}
+			return [d1, d2];
+		};
+
+		myExampleData.barChartData = myExampleData.constructBarChartData();
+
+		myExampleData.barChartOptions = {
+			bars : {
+				show : true,
+				horizontal : false,
+				shadowSize : 0,
+				barWidth : 0.5
+			},
+			mouse : {
+				track : true,
+				relative : true
+			},
+			yaxis : {
+				min : 0,
+				autoscaleMargin : 1
+			}
+		};
+
+
+		var dashboardJSON = [{
+								widgetTitle : "bar Chart Widget",
+								widgetId : "id002",
+								widgetType : "chart",
+								enableRefresh: true,
+								refreshCallBack : function (widgetId) {
+																	var refreshedData = {
+																		data : myExampleData.constructBarChartData(),
+																		options : myExampleData.barChartOptions
+																	};
+																	return refreshedData;
+								},
+								widgetContent : {
+													data : myExampleData.barChartData,
+													options : myExampleData.barChartOptions
+								}
+		}]
+		
+	});
+</script>
+<div>
+	<ul id="myDashboard"></ul>
+</div>

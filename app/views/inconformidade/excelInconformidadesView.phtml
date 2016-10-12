@@ -1,0 +1,24 @@
+<?php
+// Configurações header para forçar o download
+header("Content-type: application/x-msexcel");
+header("Content-Disposition: attacment; filename={$nomeDoExcel}.xls");
+header("Pragma: no-cache");
+header("Expires: 0");
+?>
+
+<table>
+    <tr>
+        <td>Nome</td>
+        <td>CPF</td>
+        <td>CN</td>
+    </tr>
+
+    <?php foreach ($dados as $dado): ?>
+        <tr>
+            <td width="60%" align="center"><?php echo $dado->nome; ?></td>
+            <td width="20%"><?php echo $dado->cpf; ?></td>
+            <td width="20%"><?php echo $dado->cn; ?></td>              
+        </tr>
+    <?php endforeach; ?>
+
+</table>

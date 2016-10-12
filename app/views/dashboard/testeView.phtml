@@ -1,0 +1,121 @@
+
+    <link href="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/css/carousel.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/css/echartsHome.css" rel="stylesheet">
+
+    <script src="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/example/www/js/echarts.js"></script>
+    <script src="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/js/codemirror.js"></script>
+    <script src="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/js/javascript.js"></script>
+
+    <link href="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/css/codemirror.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/css/monokai.css" rel="stylesheet">
+
+
+    <!-- Fixed navbar -->
+    
+
+
+    <div class="container-fluid">
+        <div class="row-fluid example">
+            <div id="sidebar-code" class="col-md-4">
+                <div class="well sidebar-nav">
+                    <div class="nav-header"><a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id ="icon-resize" ></a>option</div>
+                    <textarea id="code" name="code">
+option = {
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data:['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    yAxis : [
+        {
+            type : 'category',
+            data : ['周一','周二','周三','周四','周五','周六','周日']
+        }
+    ],
+    series : [
+        {
+            name:'直接访问',
+            type:'bar',
+            stack: '总量',
+            itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+            data:[320, 302, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'邮件营销',
+            type:'bar',
+            stack: '总量',
+            itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'联盟广告',
+            type:'bar',
+            stack: '总量',
+            itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'视频广告',
+            type:'bar',
+            stack: '总量',
+            itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+            data:[150, 212, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'搜索引擎',
+            type:'bar',
+            stack: '总量',
+            itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+            data:[820, 832, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+                    </textarea>
+              </div><!--/.well -->
+            </div><!--/span-->
+            <div id="graphic" class="col-md-8">
+                <div id="main" class="main"></div>
+                <div>
+                    <button type="button" class="btn btn-sm btn-success" onclick="refresh(true)">刷 新</button>
+                    <span class="text-primary">切换主题</span>
+                    <select id="theme-select"></select>
+
+                    <span id='wrong-message' style="color:red"></span>
+                </div>
+            </div><!--/span-->
+        </div><!--/row-->
+        
+        </div><!--/.fluid-container-->
+
+    <footer id="footer"></footer>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/js/echartsHome.js"></script>
+    <script src="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/js/bootstrap.min.js"></script>
+    <script src="<?php echo BASE_URL.MODULES_DIR; ?>/echarts-2.2.7/doc/asset/js/echartsExample.js"></script>
+</body>
+</html>

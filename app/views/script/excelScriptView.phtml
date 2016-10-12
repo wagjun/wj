@@ -1,0 +1,23 @@
+<?php 
+
+	// Configurações header para forçar o download
+	header("Content-type: application/x-msexcel");
+	header("Content-Disposition: attacment; filename={$script[0]->cod_alerta}.xls");
+	header("Pragma: no-cache");
+	header("Expires: 0");
+?>
+
+<table>
+	<tr>
+		<?php $campos = explode (",", $script[0]->tabela_colunas); foreach ($campos as $campo) : if ( !empty( $campo ) ) : ?>
+		<td style="border: 1px solid black; font-weight: bold; background-color: gray;"><?php echo strtolower( str_replace('"', '', trim( $campo ) ) );  ?></td>
+		<?php endif; endforeach; ?>
+	</tr>
+	<?php foreach ($registros as $indice => $registro): ?>
+	<tr>
+		<?php foreach ($campos as $campo) : if ( !empty( $campo ) ) : $campo = str_replace('"', '', trim( $campo ) ); ?>
+			<td style="border: 1px solid black;"><?php echo $registro->$campo; ?></td>					
+		<?php endif; endforeach; ?>				
+	</tr>
+	<?php endforeach; ?>
+</table>

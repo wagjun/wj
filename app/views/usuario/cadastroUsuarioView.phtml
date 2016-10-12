@@ -1,0 +1,65 @@
+<div id="cadastroUsuario" style="padding: 10px;" class="cadastroListas">
+    <form action="<?php echo BASE_URL . 'usuario/salva/'?>" method="post" enctype="multipart/form-data">
+    	<fieldset style="border: 1px solid #6495ED;">    
+            <legend style="color:#6495ED">Nova Usuario</legend>
+            <div>
+                <ul>
+                        <li>
+                                <label id="jform_name-lbl" for="jform_name" title="">Nome:</label>										
+                                <input type="text" name="nome" id="jform_name" value="" required aria-required="true" placeholder="Nome Completo" class="campos" /> *
+                        </li>
+                        <li>
+                                <label id="jform_name-lbl" for="jform_name" title="">Usuario:</label>										
+                                <input type="text" name="usuario" id="jform_name" value="" required aria-required="true" placeholder="usuario" class="campos" /> *
+                        </li>
+                        <li>
+                                <label id="jform_name-lbl" for="jform_name" title="">Senha:</label>										
+                                <input type="password" name="senha" id="jform_name" value="" required aria-required="true" placeholder="Senha" class="campos" /> *
+                        </li>
+                        <li>
+                                <label id="jform_tipo-lbl" for="jform_tipo" title="">Situacao:</label>										
+                                <select name="situacao" aria-controls="example" class="campos">
+                                        <option value="A" selected>Ativo</option>
+                                        <option value="I">Inativo</option>
+                                </select>
+                        </li>
+                        <li>
+                                <label id="jform_name-lbl" for="jform_name" title="">Perfil:</label>										
+                                <select name="perfil" aria-controls="example" class="campos">
+                                        <option value="">Selecione</option>
+                                        <?php foreach ( $profiles as $profile ) : ?>
+                                        <option value="<?php echo $profile->id; ?>"><?php echo $profile->name; ?></option>
+                                        <?php endforeach; ?>
+                                </select>
+                        </li>
+                        <li>
+                                <label id="jform_name-lbl" for="jform_name" title="">Tipo:</label>										
+                                <select name="tipo" aria-controls="example" class="campos">
+                                        <option value="">Selecione</option>
+                                        <?php foreach ( $types as $tipo) : ?>
+                                        <option value="<?php echo $tipo->id; ?>"><?php echo $tipo->description; ?></option>
+                                        <?php endforeach; ?>
+                                </select>
+                        </li>
+                        <li>
+                                <label id="jform_name-lbl" for="jform_name" title="">Autenticação:</label>										
+                                <select name="auth" aria-controls="example" class="campos">
+                                        <option value="">Selecione</option>
+                                        <?php foreach ( $auths as $auth) : ?>
+                                        <option value="<?php echo $auth->id; ?>"><?php echo $auth->driver; ?></option>
+                                        <?php endforeach; ?>
+                                </select>
+                        </li>
+                        <li>
+                                <label id="jform_name-lbl" for="jform_name" title="">E-mail:</label>										
+                                <input type="text" name="email" id="jform_name" value="" required aria-required="true" placeholder="E-mail" class="campos" /> *
+                        </li>
+                </ul>
+            </div>
+        </fieldset>
+        <div style="margin-top: 10px;">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a class="btn btn-primary" href="" title="Cancel">Cancelar</a>
+        </div>
+    </form>
+</div>

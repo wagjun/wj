@@ -1,0 +1,173 @@
+/* Documento de estilos */
+
+body  {
+    font-family:Verdana, arial, times, helvetica, arial, sans-serif;
+    margin:0;
+    padding:0;
+    font-size:76%;
+}
+
+/************************    HEADER TEXT  ************/
+#titulo  {
+    font-size:1.9em;
+    font-family:Georgia, verdana, arial, helvetica, arial, sans-serif;
+    padding-left:100px;
+    font-weight:normal;
+    margin-top:10px;;
+}
+
+/***************************   INLINE NAVIGATION   WRAPPER     *****/
+#navwrap  {
+    position:relative;
+    padding-top:1px;
+    padding-bottom:1px;
+    border-top:3px solid #888;
+    border-bottom:2px solid #888;
+}
+/*****************************   INLINE NAVIGATION   *********/
+#topnav  {
+    background:url(../images/teal.gif) repeat-x;
+    padding-top:5px;
+    color:#fff;
+}
+
+/****************************    INPUT BUTTONS  ********/
+input.side, input.blue  {
+    width:100px;
+    background-color:#77abb8;
+    font-weight: bold;
+    font-size:1em;
+    margin-top:2px;
+    color: #f0f0f0;
+    margin-left:20px;
+    height:23px;
+
+}
+
+#conteudo {
+    /*border: 1px solid #c4c4c4;*/
+    margin: 0px;
+    padding: 5px;
+
+}
+
+#rodape  {
+    /*clear:both;*/
+    height:3em;
+    border-top:1px solid #77abb8;
+    text-align:center;
+    color:#fff;
+    background-image: url(../images/teal.gif);
+    font-size:.8em;
+    margin-bottom: 0px;
+}
+
+/******************************   SIDE NAVIGATION     ****/
+#divLogin    {
+    border:1px solid #c4c4c4;
+    height: 300px;
+    width: 500px;
+    margin: auto;
+    margin-top: 150px;
+}
+#divLogin h2 {
+    font-size:100%;
+    background:url(../images/teal.gif);
+    color:#fff;
+    height:1.8em;
+    line-height:1.8em;
+    padding-left:15px;
+    margin-top:0;
+}
+
+#divLogin form ul, ol {
+    margin: auto;
+    width: 300px;
+    list-style-type: none;
+    padding-top: 30px;
+}
+
+#divLogin form ul, ol li{
+    height: 30px;
+}
+
+#divLogin form label {
+    float: left;
+    width:60px;
+    text-align:right;
+    font-family:Georgia, verdana, arial, helvetica, arial, sans-serif;
+    font-size: 11px;
+    color: teal;
+}
+
+#divLogin .campos {
+    width: 150px;
+}
+
+#divLogin .side {
+    margin-left: 125px;
+    _margin-left: 105px;
+    /*    height: 21px;
+        width: 60px;*/
+ /*line-height: 16px;
+ font-family:  Arial, Verdana, sans-serif;
+ font-size: 11px;
+ padding-bottom:1px;
+ margin-top:2px;*/
+}
+
+
+
+.g-recaptcha{
+        margin-top:15px;
+        width: 250px;
+}
+.send{
+        background: #46ac00;
+        color: #fff;
+        border: 0px;
+}
+.rc-anchor-content {
+    width: 50px;
+}
+
+/*********** CSS CAIXA DE LOGIN *****************/
+
+/*div Login*/
+/*
+#divLogin {
+    width: 169px;
+    float:right;
+    margin-top: -85px;
+    color: #E4DBCF;
+}
+
+#divLogin form ul, ol {
+    list-style:none;
+}
+
+#divLogin form ul, ol li{
+    height: 22px;
+}
+
+#divLogin form label {
+    float:left;
+    width:40px;
+    text-align:right;
+}
+
+#divLogin form ul, ol li .button {
+    margin-left: 102px;
+    _margin-left: 105px;
+    height: 21px;
+    width: 60px;
+    line-height: 16px;
+    font-family:  Arial, Verdana, sans-serif;
+    font-size: 11px;
+    padding-bottom:1px;
+    margin-top:2px;
+}
+
+#divLogin form ul, ol li .fieldLogin {
+    width: 115px;
+}*/

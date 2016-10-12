@@ -1,0 +1,122 @@
+$(document).ready(function() {
+
+    // IMPLEMENTA MASCARA MONETARIA NO MÓDULO DE NEGOCIACAÇÃO DOS REPRESENTANTES
+    $('input[id*=valor]').priceFormat({
+        limit: 7,
+        centsLimit: 2,
+        prefix: '',
+        centsSeparator: ',',
+        thousandsSeparator: '.'
+    });
+
+    // MASCARAS DE HORARIO
+
+    $('.hora').mask('99:99');
+
+
+    // TESTES COM AJAX
+    $('input[type=button]').click(function(){
+        $('#ajax').load('/parceiros/testes/viewAjax');
+    });
+
+    $('#imprimeFechados').click(function(){
+
+        $('#relatorioServicosFechados').printElement();
+    });
+
+    $('#imprimeAbertos').click(function(){
+    
+        $('#relatorioServicosAbertos').printElement();
+    });
+
+    
+    $('#listaCidadesAssociadas').hide();
+    
+    $('#exibeCidadesVinculadas').click(function(){
+       
+        $('#listaCidadesAssociadas').show('slow');
+    });
+    
+    $('#escondeCidadesVinculadas').click(function(){
+       
+        $('#listaCidadesAssociadas').hide('slow');
+    });
+    
+    $('#botaoServicosFechados').click(function(){
+
+        var inicio = $('#inicio').val();
+        var fim    = $('#fim').val();
+
+        if (inicio == null || inicio == '' || fim == null || fim == '') {
+
+            $('#msgPeriodo').html('<p style="color: red;">Campos Obrigatórios</p>');
+            return false;
+        } 
+    });
+    
+    $('#botaoServicosAbertos').click(function(){
+
+        var inicio = $('#inicio').val();
+        var fim    = $('#fim').val();
+
+        if (inicio == null || inicio == '' || fim == null || fim == '') {
+
+            $('#msgPeriodo').html('<p style="color: red;">Campos Obrigatórios</p>');
+            return false;
+        } 
+    });
+    
+    $('#checkColetas').change(function(){
+                         
+        var retorno = $('#checkColetas').is(':checked');
+
+            if ( retorno ) {
+                alert('Checado');
+                $('#checkColetas').attr('checked',true)
+            } else {
+                alert('Deschecado');
+                $('#checkColetas').attr('checked',false)
+            }
+    });
+    
+    $('#checkEntregas').change(function(){
+                         
+        var retorno = $('#checkEntregas').is(':checked');
+
+            if ( retorno ) {
+                alert('Checado');
+                $('#checkEntregas').attr('checked',true)
+            } else {
+                alert('Deschecado');
+                $('#checkEntregas').attr('checked',false)
+            }
+    });
+    
+    $('#checkValidados').change(function(){
+                         
+        var retorno = $('#checkValidados').is(':checked');
+
+            if ( retorno ) {
+                alert('Checado');
+                $('#checkValidados').attr('checked',true)
+            } else {
+                alert('Deschecado');
+                $('#checkValidados').attr('checked',false)
+            }
+    });
+    
+    $('#checkNaoValidados').change(function(){
+                         
+        var retorno = $('#checkNaoValidados').is(':checked');
+
+            if ( retorno ) {
+                alert('Checado');
+                $('#checkNaoValidados').attr('checked',true)
+            } else {
+                alert('Deschecado');
+                $('#checkNaoValidados').attr('checked',false)
+            }
+    });
+    
+    
+});

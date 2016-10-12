@@ -1,0 +1,26 @@
+<div id="editaPerfil" style="padding: 10px;" class="cadastroListas">
+    <form action="<?php echo BASE_URL.'perfil/salva/'; ?>" method="post" enctype="multipart/form-data">
+    	<fieldset style="border: 1px solid #6495ED;">    
+            <legend style="color:#6495ED">Atualizacao de Perfil</legend>
+            <div>
+				<ul>
+					<?php foreach ( $profiles as $profile ) : ?>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Nome:</label>										
+						<input type="text" name="nome" id="jform_name" value="<?php echo $profile->name; ?>" required aria-required="true" placeholder="Nome Perfil" class="campos" /> *
+					</li>
+					<li>
+						<label id="jform_name-lbl" for="jform_name" title="">Sigla:</label>										
+						<input type="text" name="sigla" id="jform_name" value="<?php echo $profile->initials; ?>" required aria-required="true" placeholder="Sigla" class="campos" /> *
+						<input type="hidden" value="<?php echo $profile->id; ?>" name="id" />
+					</li>
+					<?php endforeach; ?>
+				</ul>
+            </div>
+        </fieldset>
+        <div style="margin-top: 10px;">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a class="btn btn-primary" style="" title="Cancel">Cancelar</a>
+        </div>
+    </form>
+</div>
